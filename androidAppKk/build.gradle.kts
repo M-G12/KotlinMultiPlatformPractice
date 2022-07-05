@@ -2,6 +2,9 @@ plugins {
     id("com.android.application")
     kotlin("android")
     kotlin(KotlinPlugins.kapt)
+    id("dagger.hilt.android.plugin")
+    kotlin("plugin.serialization") version "1.7.0"
+
 }
 
 android {
@@ -53,4 +56,10 @@ dependencies {
     implementation(Compose.ui)
     implementation(Compose.navigation)
     implementation(Compose.material)
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation("com.google.dagger:hilt-android:2.42")
+    kapt("com.google.dagger:hilt-android-compiler:2.42")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.2")
 }

@@ -1,4 +1,6 @@
 buildscript {
+    var kotlin_version: String by extra
+    kotlin_version = "1.7.0"
     repositories {
         gradlePluginPortal()
         google()
@@ -7,6 +9,7 @@ buildscript {
     dependencies {
         classpath(Build.kotlinGradlePlugin)
         classpath(Build.buildTools)
+        classpath("com.google.dagger:hilt-android-gradle-plugin:2.42")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.0")
     }
 }
