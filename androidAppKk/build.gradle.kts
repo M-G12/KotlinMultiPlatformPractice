@@ -49,6 +49,8 @@ android {
 }
 
 dependencies {
+    val ktorVersion = "2.0.3"
+
     implementation(project(":shared"))
     implementation("com.google.android.material:material:1.6.1")
     implementation("androidx.appcompat:appcompat:1.4.2")
@@ -56,9 +58,11 @@ dependencies {
     implementation(Compose.ui)
     implementation(Compose.navigation)
     implementation(Compose.material)
+    implementation(Kotlinx.datetime)
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
     implementation("com.google.dagger:hilt-android:2.42")
     kapt("com.google.dagger:hilt-android-compiler:2.42")
+    implementation("io.ktor:ktor-client-android:$ktorVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.2")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.2")

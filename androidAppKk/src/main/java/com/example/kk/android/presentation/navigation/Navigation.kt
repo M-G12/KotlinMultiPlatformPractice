@@ -1,6 +1,7 @@
 package com.example.kk.android.presentation.navigation
 
 
+import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.HiltViewModelFactory
@@ -35,8 +36,9 @@ fun Navigation (){
             })
         ) { navBackStackEntry ->
             val factory = HiltViewModelFactory(LocalContext.current, navBackStackEntry)
-            val viewMode: RecipeDetailViewModel = viewModel(key = "RecipeDetailViewModel", factory = factory)
-            RecipeDetail(viewMode.recipeId.value)
+            val viewMode: RecipeDetailViewModel = viewModel(key = "RecipeDetailViewModel",
+                factory = factory)
+            RecipeDetail(viewMode.recipe.value)
         }
     }
 }

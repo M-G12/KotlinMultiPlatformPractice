@@ -32,6 +32,7 @@ kotlin {
         val ktorVersion = "2.0.3"
         val commonMain by  getting {
             dependencies {
+                implementation(Kotlinx.datetime)
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
                 implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
