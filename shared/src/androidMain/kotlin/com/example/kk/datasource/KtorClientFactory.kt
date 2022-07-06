@@ -1,4 +1,4 @@
-package com.example.kk.datasource.network
+package com.example.kk.datasource
 
 import io.ktor.client.*
 import io.ktor.client.engine.android.*
@@ -9,8 +9,8 @@ import kotlinx.serialization.json.Json
 actual class KtorClientFactory actual constructor() {
     actual fun build(): HttpClient {
         return HttpClient(Android) {
-            install(ContentNegotiation){
-                json(Json{
+            install(ContentNegotiation) {
+                json(Json {
                     ignoreUnknownKeys = true
                 })
             }

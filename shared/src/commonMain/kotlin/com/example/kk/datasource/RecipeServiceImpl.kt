@@ -1,5 +1,6 @@
-package com.example.kk.datasource.network
+package com.example.kk.datasource
 
+import com.example.kk.datasource.network.RecipeService
 import com.example.kk.datasource.network.model.RecipeDto
 import com.example.kk.datasource.network.model.RecipeSearchResponse
 import com.example.kk.domain.model.Recipe
@@ -9,19 +10,17 @@ import io.ktor.client.request.*
 
 class RecipeServiceImpl(
     private val httpClient: HttpClient,
-    private val baseUrl: String,
 ): RecipeService {
     override suspend fun search(page: Int, query: String): List<Recipe> {
         return httpClient.get{
-            url("$baseUrl/search?page=$page&query=$query")
+            url("$BASE_URL/search?page=$page&query=$query")
             header("Authorization", TOKEN)
-        }.body<RecipeSearchResponse>()
-            .results.toRecipeList()
+        }.body<RecipeSearchResponse>().results.toRecipeList()
     }
 
     override suspend fun get(id: Int): Recipe {
         return httpClient.get{
-            url("$baseUrl/get?id=$id")
+            url("$BASE_URL/get?id=$id")
             header("Authorization", TOKEN)
         }.body<RecipeDto>().toRecipe()
     }

@@ -1,4 +1,4 @@
-package com.example.kk.datasource.network
+package com.example.kk.datasource
 
 import io.ktor.client.*
 import io.ktor.client.engine.darwin.*

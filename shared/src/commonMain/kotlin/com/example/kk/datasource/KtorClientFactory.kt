@@ -1,4 +1,4 @@
-package com.example.kk.datasource.network
+package com.example.kk.datasource
 
 import com.example.kk.datasource.domain.model.DatetimeUtil
 import com.example.kk.datasource.network.model.RecipeDto
@@ -6,9 +6,10 @@ import com.example.kk.domain.model.Recipe
 import io.ktor.client.*
 
 expect class KtorClientFactory() {
-    fun build():HttpClient
+    fun build(): HttpClient
 }
-fun RecipeDto.toRecipe(): Recipe{
+
+fun RecipeDto.toRecipe(): Recipe {
     val datetimeUtil = DatetimeUtil()
     return Recipe(
         id = pk,

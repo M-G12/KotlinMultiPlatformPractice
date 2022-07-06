@@ -5,6 +5,7 @@ plugins {
     kotlin("native.cocoapods")
     id("com.android.library")
     kotlin("plugin.serialization") version "1.7.0"
+    id("com.squareup.sqldelight")
 }
 
 version = "1.0"
@@ -33,6 +34,7 @@ kotlin {
         val commonMain by  getting {
             dependencies {
                 implementation(Kotlinx.datetime)
+                implementation(SQLDelight.runtime)
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
                 implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
@@ -41,18 +43,25 @@ kotlin {
         }
         val androidMain by getting {
             dependencies {
+                implementation(SQLDelight.androidDriver)
                 implementation("io.ktor:ktor-client-android:$ktorVersion")
             }
 
         }
         val iosMain by getting {
             dependencies {
-            implementation("io.ktor:ktor-client-ios:${ktorVersion}")
+                implementation(SQLDelight.nativeDriver)
+                implementation("io.ktor:ktor-client-ios:${ktorVersion}")
         }
         }
     }
 }
-
+sqldelight {
+    database("RecipeDatabase") {
+        packageName = "com.gharibe.kk.android.datasource.cache"
+        sourceFolders = listOf("sqldelight")
+    }
+}
 android {
     compileSdk = 32
     defaultConfig {

@@ -1,9 +1,8 @@
 package com.example.kk.android.di
 
-import com.example.kk.android.BASE_URL
-import com.example.kk.datasource.network.KtorClientFactory
+import com.example.kk.datasource.KtorClientFactory
 import com.example.kk.datasource.network.RecipeService
-import com.example.kk.datasource.network.RecipeServiceImpl
+import com.example.kk.datasource.RecipeServiceImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,7 +25,6 @@ object ServiceModule {
     ): RecipeService{
         return RecipeServiceImpl(
             httpClient = httpClient,
-            baseUrl = BASE_URL,
         )
     }
 }
